@@ -8,10 +8,11 @@ body {
     align-items: center;
     padding-left: 60px;
     padding-right: 60px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     margin-bottom: 30px;
-        
+
 }
+
 .dark-mode-section {
     display: flex;
     align-items: center;
@@ -24,4 +25,58 @@ body {
     align-items: center;
     padding-left: 60px;
     padding-right: 60px;
+    margin-bottom: 100px;
+}
+
+.countries-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+
+}
+
+.country-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+
+}
+
+.country-flag {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.country-content {
+    padding: 20px;
+}
+.country-content h2 {
+   margin-top: 0;
+}
+.country-content p {
+   margin: 8px 0;
+}
+.lable {
+    font-weight: 600;
+}
+.value {
+    font-weight: 400;
+    color: #666
+}
+.search-input {
+  width: 420px;
+  height: 50px;
+  padding: 0 24px;
+}
+.filter-select {
+   width: 200px;
+  height: 50px;
+  padding: 0 20px;
 }
