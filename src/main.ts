@@ -5,11 +5,21 @@ import type { CountryApiData, Country } from "./countryTypes.js";
 const gridContainer = document.getElementById("countries-container");
 const searchInput = document.getElementById("search-input") as HTMLInputElement;
 const regionFilter = document.getElementById("filter-select") as HTMLSelectElement;
+const toggleTheme = document.getElementById("theme-toggle");
 
 //Stop execution if required elements are missing
 if (!gridContainer || !searchInput || !regionFilter) {
     throw new Error("Required DOM elements not found");
 }
+
+if (!toggleTheme) {
+    throw new Error("Theme toggle element not found");
+}
+
+//toggle dark mode class on body when the user click on the theme
+toggleTheme.addEventListener('click', () => {
+    document.body.classList.toggle("dark-mode");
+});
 
 // fetch all Countries data from the API
 const result: CountryApiData[] = await fetchAllCountries();
@@ -25,10 +35,10 @@ const countries: Country[] = result.map((item) => ({
 
 //Render the given list of countries into the page
 function renderCountries(countryList: Country[]): void {
-    if(!gridContainer) {
+    if (!gridContainer) {
         throw new Error("Grid container not found");
     }
-    gridContainer.innerHTML = ""; 
+    gridContainer.innerHTML = "";
 
     countryList.forEach((country) => {
         //create div element and set id and name attributes
@@ -45,12 +55,12 @@ function renderCountries(countryList: Country[]): void {
         <p><span class="label">Capital:</span> <span class="value">${country.capital}</span></p>
      </div>
      `;
-     // add event listerner when card is clicked
-     card.addEventListener('click', () => {
-        //handle clicks from child cards
-        window.location.href = `details.html?name=${encodeURIComponent(country.name)}`
-    });
-    gridContainer.appendChild(card);
+        // add event listerner when card is clicked
+        card.addEventListener('click', () => {
+            //handle clicks from child cards
+            window.location.href = `details.html?name=${encodeURIComponent(country.name)}`
+        });
+        gridContainer.appendChild(card);
     });
 
 }
@@ -61,32 +71,27 @@ function filterCountries(): void {
     const searchValue = searchInput.value.toLowerCase().trim();
     const selectedRegion = regionFilter.value;
 
-         
-    const filteredCountries = countries.filter((country)=> {
+
+    const filteredCountries = countries.filter((country) => {
         //check whether the country name includes the search box
-        const searchMatch= country.name.toLowerCase().includes(searchValue);
+        const searchMatch = country.name.toLowerCase().includes(searchValue);
 
         // if no region selected, get all regions otherwise match the selected region
         const regionMatch = selectedRegion === "" || country.region === selectedRegion;
 
         //keep only those countries that match both search and region filter
-         return searchMatch && regionMatch;
+        return searchMatch && regionMatch;
     });
-    
+
     // re-render the page with only the filtered countries
     renderCountries(filteredCountries);
 }
 
 //Re-filter countries whenever the user types in the search box
-searchInput.addEventListener("input",filterCountries);
+searchInput.addEventListener("input", filterCountries);
 
 //Re-filter countries whenever the user changes the region dropdown
 regionFilter.addEventListener("change", filterCountries);
 
 //show all countries when the page first loads
 renderCountries(countries);
-
-
-
-
-

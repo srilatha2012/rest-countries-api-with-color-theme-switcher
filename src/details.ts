@@ -4,6 +4,17 @@ import type { CountryDetailsApiData, CountryDetails } from "./countryTypes.js"
 
 const backButton =document.getElementById("back-button");
 const params = new URLSearchParams(window.location.search);
+const toggleTheme = document.getElementById("theme-toggle"); 
+
+if(!toggleTheme) {
+    throw new Error("Theme toggle element not found");
+}
+
+//toggle dark mode class on body when the user click on the theme
+toggleTheme.addEventListener('click', ()=>{
+  document.body.classList.toggle("dark-mode");
+});
+
 const countryName = params.get("name");
 
 if (!countryName) {
