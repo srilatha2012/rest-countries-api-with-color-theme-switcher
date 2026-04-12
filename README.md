@@ -34,6 +34,9 @@ Main Page (dark mode)
 Detailed Page(dark mode)
 ![alt text](image-3.png)
 
+Mobile
+![alt text](image-4.png)
+
 
 ### Links
 
