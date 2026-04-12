@@ -5,6 +5,7 @@ const gridContainer = document.getElementById("countries-container");
 
 // fetch Countries data from the API
 const result: CountryApiData[] = await fetchAllCountries();
+
 const countries: Country[] = result.map((item) => ({
     name: item.name.common,
     population: item.population,
@@ -33,12 +34,19 @@ countries.forEach(country => {
      <p><span class="lable">Capital:</span> <span class="value">${country.capital}</span></p>
      </div>
      `;
+    // add event listerner when card is clicked
+    card.addEventListener('click',(event) =>{
+        //handle clicks from child cards
+       window.location.href = `details.html?name=${encodeURIComponent(country.name)}`
+    });
+
     //throw if grid container is not null
     if (!gridContainer) {
         throw new Error("Grid container not found");
     }
     gridContainer.appendChild(card);
 
+  
 });
 
 
