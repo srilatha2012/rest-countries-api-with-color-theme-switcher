@@ -23,7 +23,7 @@ export async function fetchAllCountries() {
         throw new Error("Something went wrong with fetching all countries");
     }
 }
-//fetch details for one selected Country
+//fetch details for one selected Country 
 export async function fetchCountryDetails(name) {
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(name)}?fullText=true`);

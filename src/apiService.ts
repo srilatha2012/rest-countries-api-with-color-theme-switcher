@@ -30,7 +30,7 @@ export async function fetchAllCountries() {
     }
 }
 
-//fetch details for one selected Country
+//fetch details for one selected Country 
 export async function fetchCountryDetails(name: string) {
     try {
         const response = await fetch(

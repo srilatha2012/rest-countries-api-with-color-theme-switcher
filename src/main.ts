@@ -3,8 +3,8 @@ import type { CountryApiData, Country } from "./countryTypes.js";
 
 //Get required DOM elements from the page
 const gridContainer = document.getElementById("countries-container");
-const searchInput = document.getElementById("search-input") as HTMLInputElement;
-const regionFilter = document.getElementById("filter-select") as HTMLSelectElement;
+const searchInput = document.getElementById("search-input") as HTMLInputElement; // telling Typescript this element is an input box
+const regionFilter = document.getElementById("filter-select") as HTMLSelectElement; //telling TypeScript this element is an select dropdown
 const toggleTheme = document.getElementById("theme-toggle");
 
 //Stop execution if required elements are missing
@@ -18,6 +18,7 @@ if (!toggleTheme) {
 
 //Toggle dark mode class on body when the user click on the theme
 toggleTheme.addEventListener('click', () => {
+    //add or remove the dark-mode class from the body element
     document.body.classList.toggle("dark-mode");
 });
 
@@ -99,7 +100,7 @@ async function main(): Promise<void> {
     } catch (error) {
         console.error("Error loading Countries", error);
         if (gridContainer) {
-            gridContainer.innerHTML = `<p>Failed to load countries. Please try again later</p>.`;
+            gridContainer.innerHTML = `<p>Failed to load countries. Please try again later.</p>`;
         }
 
     }

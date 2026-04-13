@@ -200,6 +200,7 @@ body.dark-mode .dark-mode-section {
 }
 
 body.dark-mode .country-content,
+
 body.dark-mode .label {
     color: hsl(0, 0%, 100%);
 }
