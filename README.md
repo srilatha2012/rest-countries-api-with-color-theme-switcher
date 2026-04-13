@@ -41,9 +41,9 @@ Mobile
 ### Links
 
 - Solution URL: 
-  [GitHub Repo](https://github.com/srilatha2012/rest-countries-api-with-color-theme-switcher.git)
+  [GitHub Repo] https://github.com/srilatha2012/rest-countries-api-with-color-theme-switcher.git
 - Live Site URL: 
-[Live Demo](https://your-live-site-url.com)
+[Live Demo- Netlify] https://vocal-cassata-e4075d.netlify.app/index.html
 
 ## My process
 
@@ -77,6 +77,7 @@ Mobile
  - TypeScript sometimes complian about element is null we sould handle that element is not null
  - Responsive design depends on layout tools like Flexbox, Grid, and media quries, not only font units like rem
  - Dark mode can be implemented by toggling a class on the body
+ - for live deployment used https://www.netlify.com/
 
  ### Challenges
   - understanding how to structure API data in TypeScript
@@ -103,4 +104,19 @@ Mobile
 
 ## Acknowledgments
 - Frontend Mentor for the the challenge, design, and files
-- REST Countries API for providing country data 
+- REST Countries API for providing country data
+
+## Reflection
+In this project I built a REST Countries application using TypeScript, HTML, and CSS.
+My main goal was to fetch country data from an API and display it in a clean and user friendly way.
+I also added features like search, filter by region, dark mode, and a detailed country page.
+
+During development, I faced few challenges. One challenge was handling API data and converting into TypeScript interfaces. At first I was confused because API response had many nested objects. I solved this by carefully mapping only the requested fields and using optional chaining and default values like "N/A".
+
+Another challenge was working with Typescript null checks. Sometimes, TypeScript showed errors even after I checked for null values. I learned how to handle this using proper checks and non null asertion operator
+
+I also had some layout issues while designing the detailed page. the content was not aligned properly. I fixed by adjusting CSS flexbox and spacing
+
+if I improve this project in the future, better error messages, improve UI design and use locla storage to save theme
+
+Overall, this project helped me understand API handling, TypeScript, DOM manipulaiton better.

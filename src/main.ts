@@ -16,22 +16,13 @@ if (!toggleTheme) {
     throw new Error("Theme toggle element not found");
 }
 
-//toggle dark mode class on body when the user click on the theme
+//Toggle dark mode class on body when the user click on the theme
 toggleTheme.addEventListener('click', () => {
     document.body.classList.toggle("dark-mode");
 });
 
-// fetch all Countries data from the API
-const result: CountryApiData[] = await fetchAllCountries();
-
-//convert the raw API data into a simpler Country object
-const countries: Country[] = result.map((item) => ({
-    name: item.name.common,
-    population: item.population,
-    region: item.region,
-    capital: item.capital?.[0] ?? "N/A", //if the capital exists, get the first value. if capital is missing or undefined, do not crash return N/A
-    flag: item.flags.png
-}));
+// Store all countries so search and filter can use same list
+let countries: Country[] = [];
 
 //Render the given list of countries into the page
 function renderCountries(countryList: Country[]): void {
@@ -87,11 +78,38 @@ function filterCountries(): void {
     renderCountries(filteredCountries);
 }
 
+//Fetch Country data and render the home page
+async function main(): Promise<void> {
+    try {
+
+        // fetch all Countries data from the API
+        const result: CountryApiData[] = await fetchAllCountries();
+        //convert the raw API data into a simpler Country object
+        countries = result.map((item) => ({
+            name: item.name.common,
+            population: item.population,
+            region: item.region,
+            capital: item.capital?.[0] ?? "N/A", //if the capital exists, get the first value. if capital is missing or undefined, do not crash return N/A
+            flag: item.flags.png
+        }));
+
+        //Show all countries when the page first loads
+        renderCountries(countries);
+
+    } catch (error) {
+        console.error("Error loading Countries", error);
+        if (gridContainer) {
+            gridContainer.innerHTML = `<p>Failed to load countries. Please try again later</p>.`;
+        }
+
+    }
+}
+
 //Re-filter countries whenever the user types in the search box
 searchInput.addEventListener("input", filterCountries);
 
 //Re-filter countries whenever the user changes the region dropdown
 regionFilter.addEventListener("change", filterCountries);
 
-//show all countries when the page first loads
-renderCountries(countries);
+//Start the applicaiton
+main();
