@@ -68,7 +68,7 @@ async function main() {
          <div class="details-meta">
             <div class="details-column">
               <p><span class="label">Native Name:</span> <span class="value">${countryDetails.nativeName}</span></p>
-              <p><span class="label">Population:</span> <span class="value">${countryDetails.population.toLocaleString}</span></p>
+              <p><span class="label">Population:</span> <span class="value">${countryDetails.population}</span></p>
               <p><span class="label">Region:</span> <span class="value">${countryDetails.region}</span></p>
               <p><span class="label">Sub Region:</span> <span class="value">${countryDetails.subregion}</span></p>
               <p><span class="label">Capital:</span> <span class="value">${countryDetails.capital}</span></p>
