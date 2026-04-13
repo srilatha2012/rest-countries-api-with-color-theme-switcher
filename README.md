@@ -91,14 +91,15 @@ Mobile
 - Add better UI
 
 ### Useful resources, tools and commands 
+ - `npx tsc`  to compile typescript 
+ - `npx tsc` --watch to automatically recompile on file changes
+ - `npm run build`  - Runs the build script defined in package.json
+ - `npm run watch`  - Runs the watch script defined in package.json
 
- - npx tsc  to compile typescript 
- - npx tsc --watch to automatically recompile on file changes
- - npm run build
- - npm run watch 
+## Deployment
+I integrated GigHub with Netlify for continuos deployment. Every push to the main branch in GitHub automatically triggers a new production build.  
 
 ## Author
-
 - Name: Srilatha Puppala
 - GitHub: https://github.com/srilatha2012  
 
